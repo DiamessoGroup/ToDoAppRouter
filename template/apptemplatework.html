@@ -1,0 +1,14 @@
+<div class="w3-container w3-content w3-padding-64 w3-card-4" style="width:75%">
+    <h2>Work To Do App</h2>
+    <br>
+    <div ng-repeat="product in products">
+        <ul>
+            <li class="capitalized"> {{product | lowercase}} <span ng-click="removeItem($index)" class="w3-right"><i class="fa fa-window-close" style="font-size:16px"></i></span></li>
+        </ul>
+    </div>
+    <input type='text' ng-model="addMe" class="w3-input w3-leftbar w3-border-red" placeholder="Add your shopping item"><br>
+    <button ng-click="addItem()" class="w3-button w3-black" id="buttonItem">Add Item</button>
+    <div class="w3-panel w3-padding" id="errorTextId">
+        <p>{{errorText}}</p>
+    </div>
+</div>

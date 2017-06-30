@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+    <!--Angular Router-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--Roboto Font-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <script src='js/module.js'></script>
+    <script src='js/router.js'></script>
+    <script src='js/controllerwork.js'></script>
+    <script src='js/controllershopping.js'></script>
+
+    <title>To do List App by Krishna Diamesso</title>
+
+    <style>
+        .capitalized {
+            text-transform: capitalize;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+
+<body ng-app="myApp" ng-cloak>
+
+    <div class="w3-container">
+        <h1>To-do List App</h1>
+        <p>Please select your app</p>
+        <!-- <a href="#shoppingapp">Shopping List</a>-->
+        <!--<a href="#worktodo">Work App</a>-->
+
+        <input class="w3-radio" type="radio" name="App" value="Shopping List" onclick="window.location='#shoppingapp';">
+        <label>Shopping List</label>
+        <br>
+        <input class="w3-radio" type="radio" name="App" value="Work App" onclick="window.location='#worktodo';">
+        <label>Work App</label>
+        <br>
+        <input class="w3-radio" type="radio" name="App" value="None" onclick="window.location='#/';" checked>
+        <label>None</label>
+        <br>
+        <div ng-view></div>
+    </div>
+
+</body>
+
+</html>

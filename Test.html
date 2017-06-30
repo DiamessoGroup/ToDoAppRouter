@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        .capitalized {
+            text-transform: capitalize;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 120%;
+        }
+    </style>
+</head>
+
+<body ng-app="myShoppingList">
+    <div class="w3-container">
+        <p>Please select your app</p>
+        <a href="#Shopping List">Shopping List</a>
+        <a href="#Work App">Work App</a>
+        <div ng-view></div>
+    </div>
+    <script>
+        var app = angular.module("myShoppingList", ["ngRoute"]);
+        app.config(function($routeProvider) {
+            $routeProvider
+                .when("/Shopping List", {
+                    templateUrl: "template/apptemplateshopping.htm",
+                    controller: "shoppingCtrl"
+                })
+                .when("/Work App", {
+                    templateUrl: "template/apptemplatework.html",
+                    controller: "myWorkCtrl"
+                })
+                .otherwise({
+                    redirectTo: '/tomato'
+                });
+        });
+        app.controller('myWorkCtrl', function($scope) {
+            'use strict';
+            $scope.products = [
+                'Finish Keynote',
+                'Meeting with partners',
+                'Close 10 sales this month'
+            ];
+
+            $scope.addItem = function() {
+                $scope.errorText = '';
+                if (!$scope.addMe) {
+                    return;
+                }
+
+                if ($scope.products.indexOf($scope.addMe) === -1) {
+                    angular.element('#errorTextId').removeClass("w3-red");
+                    $scope.products.push($scope.addMe);
+                    $scope.addMe = '';
+                } else {
+                    $scope.errorText = 'This item is already in your shopping list. Please enter a valid item.';
+                    angular.element('#errorTextId').addClass("w3-red");
+                }
+            };
+
+            $scope.removeItem = function(index) {
+                $scope.products.splice(index, 1);
+            };
+        });
+
+        app.controller('shoppingCtrl', function($scope) {
+            'use strict';
+            $scope.products = [
+                'Milk',
+                'Juice',
+                'Eggs',
+                'Grappes'
+            ];
+
+            $scope.addItem = function() {
+                $scope.errorText = '';
+                if (!$scope.addMe) {
+                    return;
+                }
+
+                if ($scope.products.indexOf($scope.addMe) === -1) {
+                    angular.element('#errorTextId').removeClass("w3-red");
+                    $scope.products.push($scope.addMe);
+                    $scope.addMe = '';
+                } else {
+                    $scope.errorText = 'This item is already in your shopping list. Please enter a valid item.';
+                    angular.element('#errorTextId').addClass("w3-red");
+                }
+            };
+
+            $scope.removeItem = function(index) {
+                $scope.products.splice(index, 1);
+            };
+        });
+    </script>
+
+</body>
+</html>
